@@ -1,0 +1,20 @@
+{
+  "name": "mongo",
+  "version": "0.0.1",
+  "description": "Mongo db Locally data Upload Download",
+  "main": "index.js",
+  "scripts": {
+    "test": "browserify index.js -o bundle.js"
+  },
+  "author": "ALAADIN",
+  "license": "ISC",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "browser-run": "^7.0.0",
+    "compile-run": "^2.3.2",
+    "connect": "^3.7.0",
+    "mongodb": "^3.4.1",
+    "mongoose": "^5.8.3",
+    "serve-static": "^1.14.1"
+  }
+}
