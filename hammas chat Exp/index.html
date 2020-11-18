@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+  <script defer src="script.js"></script>
+
+  <script type="text/javascript">
+
+    function operation() {
+      const message = document.getElementById("message-input").value
+      $.ajax({
+        url: 'http://localhost:5000/chat',
+        data: { messages: message },
+        type: 'POST',
+        jsonpCallback: 'callback',
+        success: function (type) {
+          $('#lblResponse').html('Message Sent');
+          getPosts()
+        },
+        
+
+        error: function (xhr, status, error) {
+          $('#lblResponse').html("Error");
+        },
+      });
+    };
+
+    const getPosts = () => {
+      const data = fetch(`http://localhost:5000/chat`)
+        .then(res => res.json())
+        .then(message => console.log(message))
+  }
+
+
+  /*var Userdata =document.querySelector('.message-box')
+
+  document.getElementById('message-container').innerHTML=data.map(user =>
+  `<div> Name :${user.name}</div>
+  <div> Message :${user.message}</div>
+  <div>date :${user.date}</div>`
+  ).join('') */
+
+</script>
+</head>
+
+<body onload="getPosts()">
+
+<script>
+ var Userdata =document.querySelector('.message-box')
+
+  document.getElementById('message-container').innerHTML=data.map(user =>
+  `<div> Name :${user.name}</div>
+  <div> Message :${user.message}</div>
+  <div>date :${user.date}</div>`
+  ).join('')
+</script>
+  <!-- <div>
+    <ul>
+      {
+        data.map( messsage =>
+      <li key={messsage}> {messsage._id} </li>
+      <li key={messsage}> {messsage.name} </li>
+      <li key={messsage}> {messsage.message} </li>
+    )}
+      </ul>
+        </div> -->
+
+
+
+
+
+  <div class="container">
+    <form id="send-container" action="http://localhost:5000/chat" method="POST">
+
+      <div class="message-box" id="message-container" style="height: 400px;">
+      </div>
+      <div class="form-group">
+        <p id="lblResponse"></p>
+        <input type="text" class="form-control" id="message-input" aria-describedby="emailHelp"
+          placeholder="enter message">
+        <button type="submit" class="btn btn-primary" onclick="operation()" id="send-button">Submit</button>
+
+      </div>
+    </form>
+
+
+  </div>
+
+</body>
+
+</html>
