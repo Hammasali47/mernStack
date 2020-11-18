@@ -1,0 +1,78 @@
+
+<html>
+    <head>
+        <title>MONGOOSE</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script> 
+           async function loadIt(){
+            fetch('/d/shares', {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                        },
+                },
+                ).then(response => {
+                if (response.ok) {
+                    response.json().then(json => {
+                        console.log(json)
+                        $('#tb').empty();
+                        for(i=0;i<json.length;i++){
+                            $('#tb').append(`<tr><td>${json[i].title}</td><td>${json[i].author}</td><td>${json[i].url}</td><td>${json[i].uploaddate}</td><td>${json[i].share_with}</td><td><form action="/d/s" method="post" id="frm1"><select name="shareWith[]" multiple><option value="Usman">Usman</option><option value="Kashif">kashif</option><option value="Hammas" selected>Hammas</option></select><input type="text" hidden name="_id" value="${json[i]._id}"><br><button onclick="share()">Share now</button></form></td></tr>`)
+                        }
+                    });
+                }
+                });
+
+                
+
+                
+               
+            }   
+            async function share(_id){
+                frm = document.getElementById("frm1");
+                localStorage.setItem("fileId",_id);
+                frm.submit();
+            }
+            async function sub(){
+                frm = document.getElementById('frm');
+                frm.submit();                
+                
+            }
+
+            
+
+
+        </script>
+    </head>
+    <body onload="loadIt()">
+        <table width="100%" cellspacing=1 border="1">
+            <tr>
+                <th colspan="6"><center>FILES IN DATABASE</center></th>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <th>Uploaded By</th>
+                <th>Url</th>
+                <th>TimeStamp</th>
+                <th>Shared</th>
+                <th>Options</th>
+            </tr>
+        </table>
+       <table cellspacing = 1 style="width: 100%;"  id= "tb" border="1" >
+           
+       </table>
+
+       <button onclick="loadIt()">Load</button>
+       <br><br>
+    <form action="/d/up" method="post" id="frm" enctype="multipart/form-data">
+        <input type="text" name="username" placeholder ="Enter Your name : ">
+        <input type="file" name='uploadFile'>
+        <br><br>
+        <button type="submit" onclick="sub()">Upload Selected File</button> 
+        <button onclick="del()">DELETE</button>   
+    </form>
+        <script>
+            
+        </script>
+    </body>
+</html>

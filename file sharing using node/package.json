@@ -1,0 +1,24 @@
+{
+  "name": "exp-mangozee",
+  "version": "1.0.1",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "serve": "nodemon server.js"
+  },
+  "author": "Al_XISHAN",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.8.12",
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "jade": "^1.11.0",
+    "mongoose": "^5.8.12",
+    "multer": "^1.4.2"
+  }
+}
