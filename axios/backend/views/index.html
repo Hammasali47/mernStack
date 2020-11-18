@@ -1,0 +1,107 @@
+
+<!-- <html>
+
+<head>
+  <title>axios - post example</title>
+</head>
+
+<body class="container">
+  <h1>axios.post</h1>
+
+  <button id="post" type="button" onclick="getProducts()" class="btn btn-primary">POST</button>
+  
+  <form role="form" method="POST">
+  <input type="text" id='Name' placeholder="name"></input></br>
+
+  <input type="text" id="Address" placeholder="address"></input></br>
+
+  <input type="text" id="Collaction" placeholder="collaction"></input></br>
+  <button id="posti" type="button">Posti</button>
+  </form>
+  <div id="output" class="container"></div>
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"
+    integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ=="
+    crossorigin="anonymous"></script>
+  <script crossorigin="anonymous">
+
+    function getProducts() {
+      var output = document.getElementById('output');
+
+      axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
+      axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+      axios.post('https://cors-anywhere.herokuapp.com/https://e04845f04068.ngrok.io/product/get', {
+        name: "PK",
+        address: "Blouchistan"
+      })
+        .then(function (res) {
+          output.className = 'container';
+          output.innerHTML = JSON.stringify(res.data);
+          console.log(JSON.stringify(res.data))
+        })
+        .catch(function (err) {
+          output.className = 'container text-danger';
+          output.innerHTML = err.message;
+        });
+
+    }
+
+    document.getElementById('posti').onclick = function(){ -->
+
+      <!-- // axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
+      // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+      // axios.post('https://cors-anywhere.herokuapp.com/https://e04845f04068.ngrok.io/http://localhost:3000/product/add',object)
+      
+
+      // .then(function (res) {
+      //     output.className = 'container';
+      //     output.innerHTML = JSON.stringify(res.data);
+      //     console.log(JSON.stringify(res.data))
+      //   })
+      //   .catch(function (err) {
+      //     output.className = 'container text-danger';
+      //     output.innerHTML = err.message;
+      //   });
+    
+
+    // var a = document.getElementById("Name").value;
+    // console.log(a); -->
+    <!-- var object={
+      Name: document.getElementById('Name').value,
+      Address:document.getElementById('Address').value,
+      Collaction:document.getElementById('Collaction').value
+    }
+    console.log(object);
+
+    axios.post('https://cors-anywhere.herokuapp.com/https://e04845f04068.ngrok.io/product/add/admin',{
+      Name: document.getElementById('Name').value,
+      Address:document.getElementById('Address').value,
+      Collaction:document.getElementById('Collaction').value
+    })
+      
+
+      .then(function (res) {
+         console.log(res.data);
+        });
+  } -->
+  <!-- </script>
+</body>
+
+</html> -->
+
+<!doctype html>
+<html>
+  <head>
+    <title>Document</title>
+    <!-<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/> 
+  </head>
+  <body>
+    <form action="/product/add/admin" method="POST">
+      <input type="text" name="name" placeholder="Name"><br/>
+      <input type="text" name="address" placeholder="Address"><br/>
+      <button>submit</button>
+    </form>
+  </body>
+</html>
+
